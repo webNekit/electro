@@ -64,15 +64,19 @@ class BlogResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('blog_category_id')
+                Tables\Columns\TextColumn::make('category.name')
+                    ->label('Категория')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('name')
+                    ->label('Название')
                     ->searchable(),
                 Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\IconColumn::make('is_active')
+                    ->label('Активная запись')
                     ->boolean(),
                 Tables\Columns\IconColumn::make('is_popular')
+                    ->label('Популярная запись')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
