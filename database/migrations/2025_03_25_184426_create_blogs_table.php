@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->boolean('is_active')->default(true);
             $table->boolean('is_popular')->default(false);
+            $table->boolean('is_banner')->default(false);
             $table->timestamps();
         });
     }

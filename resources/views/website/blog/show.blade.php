@@ -1,6 +1,6 @@
 <x-app :title="$title">
     <div class="container-fluid bg-breadcrumb"
-        style="background-image: url({{ $blog->image ? url('storage', $blog->image) : asset('assets/img/default.png') }});">
+        style="background: linear-gradient(rgba(22, 36, 61, 0.9), rgba(0, 0, 0, 0.2)), url({{ $blog->image ? url('storage', $blog->image) : asset('assets/img/default.png') }});">
         <div class="container text-center py-5" style="max-width: 900px;">
             <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">{{ $blog->name }}</h4>
             <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
@@ -14,7 +14,7 @@
                 style="max-width: 800px; visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                 <p class="mb-0">{{ $blog->small_text }}</p>
                 <br>
-                <p class="mb-0">{{ $blog->long_text }}</p>
+                <p class="mb-0">{!! $blog->long_text !!}</p>
             </div>
         </div>
     </div>

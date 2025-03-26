@@ -5,12 +5,14 @@
             <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.2s">
                 <div class="about-item-content bg-white rounded p-5 h-100">
                     <h4 class="text-primary">{{ __('О компании') }}</h4>
-                    <h1 class="display-4 mb-4">High Range of Exploring Protection</h1>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt debitis sint tempora. Corporis
-                        consequatur illo blanditiis voluptates aperiam quos aliquam totam aliquid rem explicabo,
-                    </p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae praesentium recusandae
-                        eligendi modi hic
+                    <h1 class="display-4 mb-4">{{ __('Наша основная цель') }}</h1>
+                    <p>Создавать отечественное
+                        конкурентоспособное оборудование, строить новые подстанции и вводить
+                        новые мощности, повышать надежность энергосистемы, укрепляя
+                        энергобезопасность государства.</p>
+                    <p>Электрощит Самара - единственное в России
+                        предприятие, обладающее полувековым опытом конструирования. Доля
+                        новых изделий в производстве достигает 75%.
                     </p>
                 </div>
             </div>

@@ -38,13 +38,18 @@ class MainController extends Controller
             ->where('is_featured', true)
             ->limit(8)
             ->get();
+        $posts = Blog::orderByDesc('created_at')
+            ->where('is_active', true)
+            ->where('is_banner', true)
+            ->get();
         return view('main::index', [
             'features' => $features,
             'statistics' => $statistics,
             'services' => $services,
             'questions' => $questions,
             'blogs' => $blogs,
-            'teams' => $teams
+            'teams' => $teams,
+            'posts' => $posts
         ]);
     }
 }

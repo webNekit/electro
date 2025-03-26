@@ -9,5 +9,6 @@
             </ol>
         </div>
     </div>
-    <livewire:section.service :data="$services" />
+    <br>
+    <livewire:section.about :data="$stats" />
 </x-app>

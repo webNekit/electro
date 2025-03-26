@@ -19,10 +19,12 @@
             @empty
                 {{ __('Данный раздел редактируется') }}
             @endforelse
-            <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.2s">
-                <a class="btn btn-primary rounded-pill py-3 px-5"
-                    href="{{ route('service.index') }}">{{ __('Все услуги') }}</a>
-            </div>
+            @unless(request()->routeIs('service.index'))
+                <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.2s">
+                    <a class="btn btn-primary rounded-pill py-3 px-5"
+                        href="{{ route('service.index') }}">{{ __('Все услуги') }}</a>
+                </div>
+            @endunless
         </div>
     </div>
 </div>

@@ -10,8 +10,6 @@
                                     <h3 class="text-white">{{ config('app.name') }}</h3>
                                     <!-- <img src="img/logo.png" alt="Logo"> -->
                                 </a>
-                                <p class="text-white mb-4">Dolor amet sit justo amet elitr clita ipsum elitr
-                                    est.Lorem ipsum dolor sit amet, consectetur adipiscing...</p>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-6 col-xl-3">
@@ -87,8 +85,10 @@
                                             <i class="fas fa-map-marker-alt fa-2x"></i>
                                         </div>
                                         <div>
-                                            <h4 class="text-white">Address</h4>
-                                            <p class="mb-0">123 Street New York.USA</p>
+                                            <h4 class="text-white">{{ __('Адрес') }}</h4>
+                                            <p class="mb-0">443048, Самарская область, г.о. Самара,
+                                                вн. р-н Красноглинский, п. Красная Глинка,
+                                                кв-л 2, зд.37, офис 221.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -98,7 +98,7 @@
                                             <i class="fas fa-envelope fa-2x"></i>
                                         </div>
                                         <div>
-                                            <h4 class="text-white">Mail Us</h4>
+                                            <h4 class="text-white">E-mail</h4>
                                             <p class="mb-0">info@example.com</p>
                                         </div>
                                     </div>
@@ -109,8 +109,8 @@
                                             <i class="fa fa-phone-alt fa-2x"></i>
                                         </div>
                                         <div>
-                                            <h4 class="text-white">Telephone</h4>
-                                            <p class="mb-0">(+012) 3456 7890</p>
+                                            <h4 class="text-white">Телефон</h4>
+                                            <p class="mb-0">+7 (846) 278-55-55</p>
                                         </div>
                                     </div>
                                 </div>
@@ -137,8 +137,7 @@
                             </a>
                         </div>
                         <div class="d-flex flex-column ms-3 flex-shrink-0">
-                            <span>Call to Our Experts</span>
-                            <a href="tel:+ 0123 456 7890"><span class="text-white">Free: + 0123 456 7890</span></a>
+                            <x-phone />
                         </div>
                     </div>
                 </div>

@@ -11,8 +11,18 @@ class BlogCategorySeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run()
     {
-        BlogCategory::factory()->count(10)->create();
+        $categories = [
+            ['name' => 'Энергетическое оборудование', 'is_active' => true],
+            ['name' => 'Инновационные технологии', 'is_active' => true],
+            ['name' => 'Энергобезопасность', 'is_active' => true],
+            ['name' => 'Проекты подстанций', 'is_active' => true],
+            ['name' => 'Истории успеха', 'is_active' => true],
+        ];
+
+        foreach ($categories as $category) {
+            BlogCategory::firstOrCreate(['name' => $category['name']], $category);
+        }
     }
 }

@@ -15,6 +15,7 @@ class Blog extends Model
     protected $casts = [
         'is_popular' => 'boolean',
         'is_active' => 'boolean',
+        'is_banner' => 'boolean',
     ];
 
     public function category()

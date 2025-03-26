@@ -56,7 +56,9 @@ class BlogResource extends Resource
                 Forms\Components\Toggle::make('is_active')
                     ->label('Активная запись'),
                 Forms\Components\Toggle::make('is_popular')
-                    ->label('Популярная запись')
+                    ->label('Популярная запись'),
+                Forms\Components\Toggle::make('is_banner')
+                    ->label('Отображать в баннере')
             ]);
     }
 

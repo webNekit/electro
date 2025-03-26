@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
             ServiceSeeder::class,
             QuestionSeeder::class,
             TeamSeeder::class,
+            StatisticSeeder::class,
+            UserSeeder::class
         ]);
     }
 }
