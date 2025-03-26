@@ -33,10 +33,13 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-0 mx-lg-auto">
-                    <a href="{{ route('main.index') }}" class="nav-item nav-link active">{{ __('Главная') }}</a>
+                    <a href="{{ route('main.index') }}"
+                        class="nav-item nav-link {{  Route::is('main.index') ? 'active' : ''}}">{{ __('Главная') }}</a>
                     <a href="{{ route('main.index') }}" class="nav-item nav-link">{{ __('О компании') }}</a>
-                    <a href="service.html" class="nav-item nav-link">{{ __('Услуги') }}</a>
-                    <a href="{{ route('blog.index') }}" class="nav-item nav-link">{{ __('Новости и статьи') }}</a>
+                    <a href="{{ route('service.index') }}"
+                        class="nav-item nav-link {{  Route::is('service.index') ? 'active' : ''}}">{{ __('Услуги') }}</a>
+                    <a href="{{ route('blog.index') }}"
+                        class="nav-item nav-link {{  Route::is('blog.index') ? 'active' : ''}}">{{ __('Новости и статьи') }}</a>
                     <a href="contact.html" class="nav-item nav-link">{{ __('Контакты') }}</a>
                 </div>
             </div>

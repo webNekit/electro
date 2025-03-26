@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\BlogCategoryResource\Pages;
-use App\Filament\Resources\BlogCategoryResource\RelationManagers;
-use App\Models\BlogCategory;
+use App\Filament\Resources\StatisticResource\Pages;
+use App\Filament\Resources\StatisticResource\RelationManagers;
+use App\Models\Statistic;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,26 +13,30 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class BlogCategoryResource extends Resource
+class StatisticResource extends Resource
 {
-    protected static ?string $model = BlogCategory::class;
+    protected static ?string $model = Statistic::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationGroup = 'Статьи и новости';
+    protected static ?string $navigationGroup = 'О компании';
 
-    protected static ?string $modelLabel = 'Категория';
+    protected static ?string $modelLabel = 'Статистика';
 
-    protected static ?string $pluralModelLabel = "Категории";
+    protected static ?string $pluralModelLabel = 'Статистики';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
+                Forms\Components\TextInput::make('title')
+                    ->name('Название')
                     ->required(),
-                Forms\Components\Toggle::make('is_active')
-                    ->required(),
+                Forms\Components\TextInput::make('count')
+                    ->label('Количество')
+                    ->required()
+                    ->numeric()
+                    ->default(0),
             ]);
     }
 
@@ -40,19 +44,20 @@ class BlogCategoryResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
+                Tables\Columns\TextColumn::make('title')
                     ->label('Название')
                     ->searchable(),
-                Tables\Columns\IconColumn::make('is_active')
-                    ->label('Статус')
-                    ->boolean(),
+                Tables\Columns\TextColumn::make('count')
+                    ->label('Количество')
+                    ->numeric()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Дата создания')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
-                    ->label('Дата создания')
+                    ->label('Дата обновления')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -81,10 +86,10 @@ class BlogCategoryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListBlogCategories::route('/'),
-            'create' => Pages\CreateBlogCategory::route('/create'),
-            'view' => Pages\ViewBlogCategory::route('/{record}'),
-            'edit' => Pages\EditBlogCategory::route('/{record}/edit'),
+            'index' => Pages\ListStatistics::route('/'),
+            'create' => Pages\CreateStatistic::route('/create'),
+            'view' => Pages\ViewStatistic::route('/{record}'),
+            'edit' => Pages\EditStatistic::route('/{record}/edit'),
         ];
     }
 }

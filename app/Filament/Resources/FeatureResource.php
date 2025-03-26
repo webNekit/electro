@@ -2,10 +2,11 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\BlogCategoryResource\Pages;
-use App\Filament\Resources\BlogCategoryResource\RelationManagers;
-use App\Models\BlogCategory;
+use App\Filament\Resources\FeatureResource\Pages;
+use App\Filament\Resources\FeatureResource\RelationManagers;
+use App\Models\Feature;
 use Filament\Forms;
+use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -13,26 +14,37 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class BlogCategoryResource extends Resource
+class FeatureResource extends Resource
 {
-    protected static ?string $model = BlogCategory::class;
+    protected static ?string $model = Feature::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationGroup = 'Статьи и новости';
+    protected static ?string $navigationGroup = 'О компании';
 
-    protected static ?string $modelLabel = 'Категория';
+    protected static ?string $modelLabel = 'Достоинство';
 
-    protected static ?string $pluralModelLabel = "Категории";
+    protected static ?string $pluralModelLabel = "Достоинства";
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
+                Forms\Components\TextInput::make('title')
+                    ->name('Название')
                     ->required(),
-                Forms\Components\Toggle::make('is_active')
-                    ->required(),
+                Forms\Components\Textarea::make('description')
+                    ->name('Описание')
+                    ->required()
+                    ->columnSpanFull(),
+                Fieldset::make('Состояние')->schema([
+                    Forms\Components\Toggle::make('is_active')
+                        ->label('Активная запись')
+                        ->required(),
+                    Forms\Components\Toggle::make('is_featured')
+                        ->label('Популярная запись')
+                        ->required(),
+                ])->columnSpanFull(),
             ]);
     }
 
@@ -40,19 +52,17 @@ class BlogCategoryResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
-                    ->label('Название')
+                Tables\Columns\TextColumn::make('title')
                     ->searchable(),
                 Tables\Columns\IconColumn::make('is_active')
-                    ->label('Статус')
+                    ->boolean(),
+                Tables\Columns\IconColumn::make('is_featured')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->label('Дата создания')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
-                    ->label('Дата создания')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -81,10 +91,10 @@ class BlogCategoryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListBlogCategories::route('/'),
-            'create' => Pages\CreateBlogCategory::route('/create'),
-            'view' => Pages\ViewBlogCategory::route('/{record}'),
-            'edit' => Pages\EditBlogCategory::route('/{record}/edit'),
+            'index' => Pages\ListFeatures::route('/'),
+            'create' => Pages\CreateFeature::route('/create'),
+            'view' => Pages\ViewFeature::route('/{record}'),
+            'edit' => Pages\EditFeature::route('/{record}/edit'),
         ];
     }
 }

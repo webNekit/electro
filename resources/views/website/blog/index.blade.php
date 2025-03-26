@@ -1,3 +1,11 @@
 <x-app :title="$title">
-    <h1>{{ __("Новости и статьи") }}</h1>
+    <div class="container-fluid blog py-5">
+        <div class="container py-5">
+            <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+                <h4 class="text-primary">{{ __('Раздел') }}</h4>
+                <h1 class="display-4 mb-4">{{ $title }}</h1>
+            </div>
+            <livewire:blog.collection :blogs="$blogs" />
+        </div>
+    </div>
 </x-app>
