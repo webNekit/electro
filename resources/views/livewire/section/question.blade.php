@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.4s">
-                <img src="img/carousel-2.png" class="img-fluid w-100" alt="">
+                <img src="{{ asset('assets/img/carousel-2.png') }}" class="img-fluid w-100" alt="">
             </div>
         </div>
     </div>
